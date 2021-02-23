@@ -1,1 +1,44 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/nytimes/covid-19-data/master/live/us-states.csv"
+  },
+  "vconcat": [
+    {
+      "mark": {"type": "bar"},
+      "transform": [{"filter":{"selection":"moneyBrush"}}],
+      "encoding": {
+        "x": {"field": "state", "type": "nominal"},
+        "y": {"field": "confirmed_deaths", "type": "quantitative"}
+      }
+    },
+    {
+      "mark": {"type": "point"},
+      "selection": {"moneyBrush":{"type":"interval"}},
+      "transform": [{"filter":{"selection":"moneyBrush"}}],
+      "encoding": {
+        "x": {"field": "state", "type": "nominal"},
+        "y": {"field": "cases", "type": "quantitative"},
+           "color":{"condition":{"selection": "moneyBrush",
+        "value":"purple"}
+        }
+      }
+    },
+    {
+      "mark": "line",
+      "transform": [{"filter":{"selection":"moneyBrush"}}],
+      "encoding": {
+        "x": {"field": "state", "type": "nominal"},
+        "y": {"field": "deaths", "type": "quantitative"}
+        }
+    },
+    {
+      "mark":"line",
+      "encoding": {
+        "x":{"field":"cases", "type": "quantitative"},
+        "y":{"field":"deaths", "type":"quantitative"}
+      }
+    }
 
+  ]
+}
