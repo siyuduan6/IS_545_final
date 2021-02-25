@@ -9,3 +9,4 @@ About the assignment:
 This assignment requires me to visualize my dataset by different kinds of marks and a faceted with brushing and linking. 
 First of all, Vega is programmer-friendly since it is easily-handled and has a tidy structure. Programmer can use only a few codes to realize multiple visualization functions. Moreover, it is easy for beginner to understand. Even though I did not learn or utilize much this language before, I still could be familiar with it quickly. The only one problem is the Vega-Lite editor is on my browser so the efficiency of my work totally depends on the speed of my network. Sometimes, the dataset imported by url could not be loaded and the editor became uncontrollable when something affected the speed of my WIFI.
 
+The embedded Vega_Lite configuration on Iodide: https://alpha.iodide.io/notebooks/7042/
