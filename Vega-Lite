@@ -3,34 +3,35 @@
   "data": {
     "url": "https://raw.githubusercontent.com/nytimes/covid-19-data/master/live/us-states.csv"
   },
-  "vconcat": [
+  "hconcat": [
     {
       "mark": {"type": "bar"},
-      "transform": [{"filter":{"selection":"moneyBrush"}}],
+      "selection": {"Brush":{"type":"interval"}},
+      "transform": [{"filter":{"selection":"Brush"}}],
       "encoding": {
-        "x": {"field": "state", "type": "nominal"},
+        "x": {"field": "deaths", "type": "quantitative","bin":true},
+        "y": {"aggregate":"count", "type": "quantitative"},
+        "color":{"condition":{"selection":"Brush"},
+        "value":"grey"
+        }
+      }
+    },
+    {
+      "mark": {"type": "bar"},
+      "transform": [{"filter":{"selection":"Brush"}}],
+      "encoding": {
+        "x": {"field": "cases", "type": "quantitative","bin":true},
+        "y": {"aggregate":"count", "type": "quantitative"},
+        "color":{"value":"purple"}
+      }
+    },
+    {
+      "mark": "point",
+      "transform": [{"filter":{"selection":"Brush"}}],
+      "encoding": {
+        "x": {"field": "confirmed_cases", "type": "quantitative"},
         "y": {"field": "confirmed_deaths", "type": "quantitative"}
       }
-    },
-    {
-      "mark": {"type": "point"},
-      "selection": {"moneyBrush":{"type":"interval"}},
-      "transform": [{"filter":{"selection":"moneyBrush"}}],
-      "encoding": {
-        "x": {"field": "state", "type": "nominal"},
-        "y": {"field": "cases", "type": "quantitative"},
-           "color":{"condition":{"selection": "moneyBrush",
-        "value":"purple"}
-        }
-      }
-    },
-    {
-      "mark": "line",
-      "transform": [{"filter":{"selection":"moneyBrush"}}],
-      "encoding": {
-        "x": {"field": "state", "type": "nominal"},
-        "y": {"field": "deaths", "type": "quantitative"}
-        }
     },
     {
       "mark":"line",
@@ -39,6 +40,5 @@
         "y":{"field":"deaths", "type":"quantitative"}
       }
     }
-
   ]
 }
