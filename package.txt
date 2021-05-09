@@ -4,3 +4,4 @@ matplotlib==3.4.1
 pandas==1.2.2
 streamlit==0.81.0
 numpy==1.20.1
+pydeck==0.6.1
